@@ -1,0 +1,302 @@
+/* ============================================================
+   LEGAL PAGES — matches main site tokens (index.html)
+   ============================================================ */
+
+/* ============================================================
+   SELF-HOSTED VARIABLE FONTS (GDPR-safe, no third-party requests)
+   Source Sans 3  — weight axis 200..900, roman + italic
+   Source Serif 4 — weight 200..900 + optical-size 8..60, roman + italic
+   Files in assets/fonts/
+   ============================================================ */
+@font-face {
+  font-family: 'Source Sans 3';
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url('../fonts/SourceSans3-VariableFont_wght.ttf') format('truetype-variations');
+}
+@font-face {
+  font-family: 'Source Sans 3';
+  font-style: italic;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url('../fonts/SourceSans3-Italic-VariableFont_wght.ttf') format('truetype-variations');
+}
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url('../fonts/SourceSerif4-VariableFont.ttf') format('truetype-variations');
+}
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: italic;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url('../fonts/SourceSerif4-Italic-VariableFont.ttf') format('truetype-variations');
+}
+
+:root {
+  --bg:          oklch(0.985 0.006 85);
+  --paper:       oklch(0.965 0.010 82);
+  --ink:         oklch(0.22  0.010 60);
+  --ink-2:       oklch(0.42  0.010 60);
+  --ink-3:       oklch(0.58  0.012 60);
+  --rule:        oklch(0.88  0.010 80);
+  --rule-2:      oklch(0.93  0.008 82);
+  --accent:      oklch(0.55  0.110 45);
+  --accent-soft: oklch(0.55  0.110 45 / 0.10);
+
+  --shadow-sm: 0 1px 2px rgba(40, 25, 10, 0.04);
+  --shadow-md: 0 8px 30px rgba(40, 25, 10, 0.06);
+
+  --sans:   'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --serif:  'Source Serif 4', 'Iowan Old Style', Georgia, serif;
+
+  --maxw: 1160px;
+  --legal-maxw: 780px;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+}
+
+[data-theme="dark"] {
+  --bg:          oklch(0.18 0.010 60);
+  --paper:       oklch(0.22 0.012 60);
+  --ink:         oklch(0.94 0.008 80);
+  --ink-2:       oklch(0.76 0.010 75);
+  --ink-3:       oklch(0.60 0.010 70);
+  --rule:        oklch(0.32 0.010 60);
+  --rule-2:      oklch(0.26 0.010 60);
+  --accent:      oklch(0.72 0.110 50);
+  --accent-soft: oklch(0.72 0.110 50 / 0.14);
+
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+  --shadow-md: 0 8px 30px rgba(0,0,0,0.35);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 16.5px;
+  line-height: 1.65;
+  font-optical-sizing: auto;
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition: background 0.35s ease, color 0.35s ease;
+}
+::selection { background: var(--accent-soft); color: var(--ink); }
+a { color: inherit; text-decoration: none; }
+
+/* ============================================================
+   NAV — mirrors index.html
+   ============================================================ */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  background: color-mix(in oklab, var(--bg) 90%, transparent);
+  backdrop-filter: saturate(1.2) blur(10px);
+  -webkit-backdrop-filter: saturate(1.2) blur(10px);
+  border-bottom: 1px solid var(--rule);
+}
+.nav-inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0.9rem var(--gutter);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 2rem;
+}
+.nav-brand {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.nav-links {
+  display: flex; gap: 1.5rem; align-items: center;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.nav-link {
+  color: var(--ink-2);
+  padding: 0.25rem 0;
+  transition: color 0.2s ease;
+}
+.nav-link:hover { color: var(--ink); }
+
+.theme-toggle {
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  width: 32px; height: 32px;
+  display: inline-flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  color: var(--ink-2);
+  transition: all 0.25s ease;
+  margin-left: 0.25rem;
+}
+.theme-toggle:hover { color: var(--ink); border-color: var(--ink-2); }
+.theme-toggle svg { width: 15px; height: 15px; }
+.theme-toggle .sun { display: none; }
+[data-theme="dark"] .theme-toggle .sun { display: block; }
+[data-theme="dark"] .theme-toggle .moon { display: none; }
+
+/* ============================================================
+   LEGAL LAYOUT
+   ============================================================ */
+main.legal {
+  max-width: var(--legal-maxw);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.legal-head {
+  padding: 4.5rem 0 2.5rem;
+  border-bottom: 1px solid var(--rule-2);
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+.legal-eyebrow {
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  font-weight: 600;
+  color: var(--ink-3);
+  margin-bottom: 1rem;
+}
+.legal-head h1 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(2rem, 3.6vw, 2.75rem);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--ink);
+  margin: 0;
+}
+.lang-switch {
+  position: absolute;
+  top: 4.5rem;
+  right: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--ink-3);
+  font-family: var(--sans);
+  letter-spacing: 0.03em;
+}
+.lang-switch .sw-active { color: var(--ink); font-weight: 600; }
+.lang-switch .sw-sep { color: var(--rule); }
+.lang-switch a {
+  color: var(--ink-3);
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+  padding-bottom: 1px;
+}
+.lang-switch a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+main.legal section {
+  padding: 1.6rem 0 1.2rem;
+}
+main.legal section + section {
+  border-top: 1px solid var(--rule-2);
+}
+
+main.legal h2 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.22rem;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  color: var(--ink);
+  margin: 0 0 1rem 0;
+}
+main.legal h3 {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--ink);
+  margin: 1.6rem 0 0.6rem 0;
+}
+main.legal p,
+main.legal ul {
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: var(--ink-2);
+  margin: 0 0 1rem 0;
+  text-wrap: pretty;
+}
+main.legal ul {
+  padding-left: 1.25rem;
+}
+main.legal li {
+  margin-bottom: 0.35rem;
+}
+main.legal code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.9em;
+  padding: 0.08em 0.36em;
+  background: var(--rule-2);
+  border-radius: 3px;
+  color: var(--ink);
+}
+main.legal a {
+  color: var(--ink);
+  border-bottom: 1px solid var(--rule);
+  transition: color 0.2s, border-color 0.2s;
+}
+main.legal a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* ============================================================
+   FOOTER — mirrors index.html
+   ============================================================ */
+footer {
+  max-width: var(--maxw);
+  margin: 4rem auto 0;
+  padding: 3rem var(--gutter) 4rem;
+  border-top: 1px solid var(--rule-2);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.85rem;
+  color: var(--ink-3);
+}
+.footer-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+.footer-nav a {
+  color: var(--ink-3);
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s;
+}
+.footer-nav a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.footer-nav a.active { color: var(--ink); }
+.footer-nav .sep { color: var(--rule); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 720px) {
+  .legal-head { padding-top: 3rem; }
+  .lang-switch {
+    position: static;
+    margin-top: 1.25rem;
+  }
+  main.legal h2 { font-size: 1.12rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0s !important;
+    transition-duration: 0s !important;
+    scroll-behavior: auto !important;
+  }
+}

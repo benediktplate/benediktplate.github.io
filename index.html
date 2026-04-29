@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Benedikt J. Plate — Quantitative empirical accounting researcher at the University of Bremen. Generative AI, financial reporting, capital market implications.">
+<title>Benedikt J. Plate | Research Associate</title>
+
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="assets/icons/favicon-48.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/icons/favicon-180.png">
+
+<link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
+
+<style>
+/* ============================================================
+   SELF-HOSTED VARIABLE FONTS (GDPR-safe, no third-party requests)
+   Source Sans 3  — weight 200..900, roman + italic
+   Source Serif 4 — weight 200..900 + optical-size 8..60, roman + italic
+   ============================================================ */
+@font-face {
+  font-family: 'Source Sans 3';
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url('assets/fonts/SourceSans3-VariableFont_wght.ttf') format('truetype-variations');
+}
+@font-face {
+  font-family: 'Source Sans 3';
+  font-style: italic;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url('assets/fonts/SourceSans3-Italic-VariableFont_wght.ttf') format('truetype-variations');
+}
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url('assets/fonts/SourceSerif4-VariableFont.ttf') format('truetype-variations');
+}
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: italic;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url('assets/fonts/SourceSerif4-Italic-VariableFont.ttf') format('truetype-variations');
+}
+
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root {
+  /* Warm-neutral palette (light) */
+  --bg:          oklch(0.985 0.006 85);      /* warm off-white */
+  --paper:       oklch(0.965 0.010 82);      /* cream panel */
+  --ink:         oklch(0.22  0.010 60);      /* soft black */
+  --ink-2:       oklch(0.42  0.010 60);      /* secondary text */
+  --ink-3:       oklch(0.58  0.012 60);      /* tertiary / captions */
+  --rule:        oklch(0.88  0.010 80);      /* hairline */
+  --rule-2:      oklch(0.93  0.008 82);      /* faint divider */
+  --accent:      oklch(0.55  0.110 45);      /* terracotta */
+  --accent-soft: oklch(0.55  0.110 45 / 0.10);
+
+  --shadow-sm: 0 1px 2px rgba(40, 25, 10, 0.04);
+  --shadow-md: 0 8px 30px rgba(40, 25, 10, 0.06);
+
+  --sans:   'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --serif:  'Source Serif 4', 'Iowan Old Style', Georgia, serif;
+
+  --maxw: 1160px;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+}
+
+[data-theme="dark"] {
+  --bg:          oklch(0.18 0.010 60);
+  --paper:       oklch(0.22 0.012 60);
+  --ink:         oklch(0.94 0.008 80);
+  --ink-2:       oklch(0.76 0.010 75);
+  --ink-3:       oklch(0.60 0.010 70);
+  --rule:        oklch(0.32 0.010 60);
+  --rule-2:      oklch(0.26 0.010 60);
+  --accent:      oklch(0.72 0.110 50);
+  --accent-soft: oklch(0.72 0.110 50 / 0.14);
+
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+  --shadow-md: 0 8px 30px rgba(0,0,0,0.35);
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 16.5px;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-optical-sizing: auto;
+  transition: background 0.35s ease, color 0.35s ease;
+}
+
+::selection { background: var(--accent-soft); color: var(--ink); }
+
+a { color: inherit; text-decoration: none; }
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  background: color-mix(in oklab, var(--bg) 90%, transparent);
+  backdrop-filter: saturate(1.2) blur(10px);
+  -webkit-backdrop-filter: saturate(1.2) blur(10px);
+  border-bottom: 1px solid var(--rule);
+}
+.nav-inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0.9rem var(--gutter);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 2rem;
+}
+.nav-brand {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.nav-links {
+  display: flex; gap: 2rem; align-items: center;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.nav-links a {
+  color: var(--ink-2);
+  position: relative;
+  padding: 0.25rem 0;
+  transition: color 0.2s ease;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-links a.active { color: var(--ink); }
+.nav-links a.active::after {
+  content: '';
+  position: absolute; left: 0; right: 0; bottom: -22px;
+  height: 2px; background: var(--accent);
+}
+.theme-toggle {
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  width: 32px; height: 32px;
+  display: inline-flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  color: var(--ink-2);
+  transition: all 0.25s ease;
+  margin-left: 0.5rem;
+}
+.theme-toggle:hover { color: var(--ink); border-color: var(--ink-2); }
+.theme-toggle svg { width: 15px; height: 15px; }
+.theme-toggle .sun { display: none; }
+[data-theme="dark"] .theme-toggle .sun { display: block; }
+[data-theme="dark"] .theme-toggle .moon { display: none; }
+
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer;
+  background: transparent; border: 0; padding: 6px; }
+.hamburger span { display:block; width:22px; height: 1.8px; background: var(--ink); }
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+main {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+section { padding: 5rem 0 4rem; scroll-margin-top: 80px; }
+section + section { border-top: 1px solid var(--rule-2); }
+
+.section-title {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(1.7rem, 3vw, 2.1rem);
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  color: var(--ink);
+  margin: 0 0 2.5rem 0;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 3.5rem;
+  align-items: start;
+  padding-top: 3rem;
+}
+.hero-photo img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 2px;
+  box-shadow: var(--shadow-md);
+  display: block;
+}
+
+.hero-text h1 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(2.25rem, 4.2vw, 3.2rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.7rem 0;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.hero-role {
+  font-size: 1.02rem;
+  color: var(--ink);
+  font-weight: 500;
+  margin: 0 0 0.35rem 0;
+}
+.hero-affiliation {
+  font-size: 0.95rem;
+  color: var(--ink-2);
+  margin: 0 0 1.8rem 0;
+  line-height: 1.55;
+}
+.hero-affiliation a {
+  color: var(--ink-2);
+  border-bottom: 1px solid var(--rule);
+  transition: border-color 0.2s, color 0.2s;
+}
+.hero-affiliation a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.hero-bio {
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: var(--ink);
+  margin: 0;
+  text-wrap: pretty;
+}
+.hero-bio p + p { margin-top: 1rem; }
+
+/* CONTACT */
+.contact {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--rule);
+}
+.contact-heading {
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  font-weight: 600;
+  color: var(--ink-3);
+  margin-bottom: 1.25rem;
+}
+.contact-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2.2rem;
+  font-size: 0.93rem;
+  margin-bottom: 1.3rem;
+}
+.contact-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--ink);
+}
+.contact-row i {
+  color: var(--accent);
+  font-size: 0.95rem;
+  width: 16px;
+  text-align: center;
+}
+.contact-row a { color: var(--ink); border-bottom: 1px solid transparent; transition: all 0.2s; }
+.contact-row a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+.contact-links {
+  display: flex; flex-wrap: wrap; gap: 1rem 2.2rem;
+  font-size: 0.93rem;
+}
+.contact-links a {
+  color: var(--ink);
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+.contact-links a i {
+  color: var(--accent);
+  font-size: 0.95rem;
+  width: 16px;
+  text-align: center;
+}
+.contact-links a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* ============================================================
+   RESEARCH
+   ============================================================ */
+.research-group { margin-bottom: 3.5rem; }
+.research-group:last-child { margin-bottom: 0; }
+
+.group-label {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--rule);
+}
+.group-label h3 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 0;
+}
+.group-label .count {
+  font-size: 0.82rem;
+  color: var(--ink-3);
+  font-weight: 400;
+}
+
+.paper {
+  padding: 1.75rem 0;
+  border-bottom: 1px solid var(--rule-2);
+  transition: background 0.25s ease;
+}
+.paper:last-child { border-bottom: 0; }
+
+.paper-title {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.2rem;
+  line-height: 1.3;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  margin: 0 0 0.6rem 0;
+  text-wrap: balance;
+}
+.paper-title a {
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-repeat: no-repeat;
+  background-size: 0 1px;
+  background-position: 0 100%;
+  transition: background-size 0.35s ease, color 0.2s ease;
+  padding-bottom: 2px;
+}
+.paper-title a:hover {
+  background-size: 100% 1px;
+  color: var(--accent);
+}
+.paper-title .ext {
+  display: inline-block;
+  margin-left: 0.35rem;
+  opacity: 0.4;
+  font-size: 0.7em;
+  transition: opacity 0.2s, color 0.2s;
+}
+.paper-title a:hover .ext { opacity: 1; color: var(--accent); }
+
+.paper-meta {
+  font-size: 0.9rem;
+  color: var(--ink-2);
+  margin-bottom: 0.3rem;
+  line-height: 1.55;
+}
+.paper-authors strong { font-weight: 600; color: var(--ink); }
+.paper-venue { font-style: italic; color: var(--ink-2); }
+.paper-venue .vol { font-style: normal; }
+.paper-presented {
+  font-size: 0.86rem;
+  color: var(--ink-3);
+  margin-top: 0.5rem;
+  line-height: 1.55;
+}
+.paper-presented .lbl {
+  font-weight: 600;
+  color: var(--ink-2);
+  margin-right: 0.35rem;
+}
+
+/* Actions row */
+.paper-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1.4rem;
+  margin-top: 0.9rem;
+  align-items: center;
+}
+.paper-actions button {
+  background: transparent;
+  border: 0;
+  padding: 0.25rem 0;
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--ink-2);
+  cursor: pointer;
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  transition: color 0.2s;
+}
+.paper-actions button:hover { color: var(--accent); }
+.paper-actions button .chev {
+  width: 9px; height: 9px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  margin-top: -3px;
+  transition: transform 0.3s ease;
+}
+.paper-actions button[aria-expanded="true"] .chev { transform: rotate(-135deg); margin-top: 2px; }
+
+/* Abstract panel — figure is now larger */
+.abstract {
+  display: grid;
+  grid-template-columns: 1fr 520px;
+  gap: 2.25rem;
+  align-items: center;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.5s ease, opacity 0.35s ease, margin 0.35s ease, padding 0.35s ease;
+  margin-top: 0;
+}
+.abstract.open {
+  max-height: 3000px;
+  opacity: 1;
+  margin-top: 1.3rem;
+  padding-top: 1.3rem;
+  border-top: 1px dashed var(--rule);
+}
+.abstract-text {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--ink-2);
+  text-wrap: pretty;
+}
+.abstract-text p:first-child { margin-top: 0; }
+.abstract-text p:last-child { margin-bottom: 0; }
+
+.figure {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 0.9rem;
+  position: sticky;
+  top: 90px;
+  margin: 0;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 1px;
+}
+
+/* BibTeX popover */
+.bibtex-panel {
+  display: none;
+  margin-top: 1rem;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--ink-2);
+  position: relative;
+}
+.bibtex-panel.open { display: block; }
+.bibtex-panel pre {
+  margin: 0;
+  padding: 1rem 3.5rem 1rem 1rem;
+  white-space: pre-wrap;
+  overflow-x: auto;
+}
+.bibtex-copy {
+  position: absolute; top: 0.5rem; right: 0.5rem;
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 0.3rem 0.6rem;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.bibtex-copy:hover { color: var(--accent); border-color: var(--accent); }
+.bibtex-copy.copied { color: var(--accent); }
+
+/* ============================================================
+   TEACHING
+   ============================================================ */
+.teaching-list { display: grid; gap: 0; }
+.teaching-item {
+  padding: 1.75rem 0;
+  border-bottom: 1px solid var(--rule-2);
+}
+.teaching-item:last-child { border-bottom: 0; }
+.teaching-item h4 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.2rem;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  margin: 0 0 0.35rem 0;
+}
+.teaching-meta {
+  font-size: 0.9rem;
+  color: var(--ink-2);
+  margin: 0 0 0.6rem 0;
+}
+.teaching-details {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--ink-2);
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.5s ease, opacity 0.35s ease, margin 0.35s ease, padding 0.35s ease;
+}
+.teaching-details.open {
+  max-height: 800px;
+  opacity: 1;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--rule);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 3rem var(--gutter) 4rem;
+  border-top: 1px solid var(--rule-2);
+  margin-top: 3rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.85rem;
+  color: var(--ink-3);
+}
+footer .back-to-top {
+  color: var(--ink-3);
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s;
+}
+footer .back-to-top:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.footer-legal-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+.footer-legal-links a {
+  color: var(--ink-3);
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s;
+}
+.footer-legal-links a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.footer-legal-links .sep { color: var(--rule); }
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 960px) {
+  .abstract { grid-template-columns: 1fr 420px; }
+}
+@media (max-width: 880px) {
+  .hero { gap: 1.75rem; padding-top: 2.5rem; }
+  .hero-text h1 { white-space: normal; }
+  .abstract { grid-template-columns: 1fr; }
+  .figure { position: static; }
+  section { padding: 4rem 0 3rem; }
+}
+@media (max-width: 640px) {
+  .hero { grid-template-columns: 1fr; gap: 1.5rem; }
+  .hero-photo { max-width: 220px; }
+}
+@media (max-width: 640px) {
+  .hamburger { display: inline-flex; }
+  .nav-links {
+    display: none;
+    position: absolute; top: 100%; left: 0; right: 0;
+    background: var(--bg);
+    flex-direction: column;
+    padding: 1rem var(--gutter);
+    border-bottom: 1px solid var(--rule);
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a.active::after { display: none; }
+  .hero-text h1 { font-size: 2.1rem; }
+  .paper-title { font-size: 1.08rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0s !important;
+    transition-duration: 0s !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#start" class="nav-brand">Benedikt J. Plate</a>
+
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+
+    <div class="nav-links" id="navMenu">
+      <a href="#start" class="nav-link active">Start</a>
+      <a href="#research" class="nav-link">Research</a>
+      <a href="#teaching" class="nav-link">Teaching</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- ============================ START ============================ -->
+<section id="start">
+  <div class="hero reveal">
+    <div class="hero-photo">
+      <img src="assets/images/portrait.jpg" alt="Portrait of Benedikt J. Plate">
+    </div>
+    <div class="hero-text">
+      <h1>Benedikt J. Plate</h1>
+      <p class="hero-role">Research Associate &amp; Ph.D. Candidate</p>
+      <p class="hero-affiliation">
+        <a href="https://www.uni-bremen.de/institute-for-finance-and-accounting-ifa" target="_blank" rel="noopener">Institute for Finance and Accounting (IFA)</a><br>
+        University of Bremen
+      </p>
+      <div class="hero-bio">
+        <p>I am a Research Associate and Ph.D. Candidate at the Institute for Finance and Accounting (IFA) at the University of Bremen.</p>
+        <p>My research focuses on the intersection of technology in financial reporting and capital market implications. I use quantitative empirical methods and archival data to study how corporate disclosures affect the decision-making of managers and investors.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact reveal">
+    <div class="contact-heading">Contact</div>
+    <div class="contact-grid">
+      <div class="contact-row">
+        <i class="fas fa-envelope"></i>
+        <a href="mailto:plate@uni-bremen.de">plate@uni-bremen.de</a>
+      </div>
+      <div class="contact-row">
+        <i class="fas fa-phone"></i>
+        <a href="tel:+4942121866684">+49 421 218 66684</a>
+      </div>
+      <div class="contact-row">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>Max-von-Laue-Str. 1, 28359 Bremen, Germany</span>
+      </div>
+    </div>
+    <div class="contact-links">
+      <a href="https://orcid.org/0009-0003-6982-3718" target="_blank" rel="noopener"><i class="fab fa-orcid"></i> ORCID</a>
+      <a href="https://www.linkedin.com/in/benedikt-j-plate-710a2b144/" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=6705580" target="_blank" rel="noopener"><i class="fas fa-file-alt"></i> SSRN</a>
+      <a href="https://scholar.google.com/citations?user=khxBVskAAAAJ" target="_blank" rel="noopener"><i class="fas fa-graduation-cap"></i> Google Scholar</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ RESEARCH ============================ -->
+<section id="research">
+  <div class="reveal">
+    <h2 class="section-title">Research</h2>
+  </div>
+
+  <!-- Published -->
+  <div class="research-group reveal">
+    <div class="group-label">
+      <h3>Published</h3>
+      <span class="count">3 articles</span>
+    </div>
+
+    <!-- P1 -->
+    <article class="paper">
+      <h4 class="paper-title">
+        <a href="https://publications.aaahq.org/iae/article-abstract/40/1/93/12790/Tackling-Professorial-Expert-Bias-The-Role-of?redirectedFrom=fulltext" target="_blank" rel="noopener">
+          Tackling Professorial Expert Bias: The Role of ChatGPT in Simplifying Financial Accounting Exam Texts<span class="ext">↗</span>
+        </a>
+      </h4>
+      <div class="paper-meta">
+        <span class="paper-authors">Voshaar, J., Wecks, J. O., <strong>Plate, B. J.</strong>, &amp; Zimmermann, J.</span>
+      </div>
+      <div class="paper-meta">
+        <span class="paper-venue">Issues in Accounting Education <span class="vol">· 40(1), 2025</span></span>
+      </div>
+      <div class="paper-actions">
+        <button type="button" class="abstract-trigger" aria-expanded="false" data-target="abs-1">
+          <span class="chev"></span><span class="lbl-txt">Abstract</span>
+        </button>
+        <button type="button" class="bibtex-trigger" data-target="bib-1">BibTeX</button>
+      </div>
+
+      <div class="abstract" id="abs-1">
+        <div class="abstract-text">
+          <p>Experts tend to produce complex texts but mistakenly consider them an easy read for their audience. Accounting professors likely exhibit such expert bias in formulating exams. Consequently, students struggle with comprehension, giving rise to high failure rates and a shortage of talent for the profession. This study explores the potential of ChatGPT for overcoming expert bias and improving financial accounting exam texts to increase comprehension and performance and reduce frustration and confusion.</p>
+          <p>We ask three key questions: (1) Does text modification with ChatGPT lead to increased perceived comprehension? (2) Does text modification with ChatGPT result in better performance? and (3) Does perceived comprehension mediate the relationship between ChatGPT-based text modification and performance? We find that students benefit from ChatGPT-based modification through increased perceived comprehension and reduced confusion and frustration. Causal mediation analysis suggests that improved perceived comprehension attributes significantly to exam performance, but we cannot document an overall positive effect.</p>
+        </div>
+        <figure class="figure">
+          <img src="assets/images/fig_expert_bias.jpg" alt="2×2 design with mean perceived comprehension by group and exam part">
+        </figure>
+      </div>
+
+      <div class="bibtex-panel" id="bib-1">
+<pre>@article{voshaar2025tackling,
+  title   = {Tackling Professorial Expert Bias: The Role of ChatGPT in Simplifying Financial Accounting Exam Texts},
+  author  = {Voshaar, Jan and Wecks, Jan Ole and Plate, Benedikt J. and Zimmermann, Jochen},
+  journal = {Issues in Accounting Education},
+  volume  = {40},
+  number  = {1},
+  pages   = {93--},
+  year    = {2025}
+}</pre>
+        <button class="bibtex-copy" type="button">Copy</button>
+      </div>
+    </article>
+
+    <!-- P2 -->
+    <article class="paper">
+      <h4 class="paper-title">
+        <a href="https://aisel.aisnet.org/ecis2025/education/education/8/" target="_blank" rel="noopener">
+          Generative AI Usage and Exam Performance<span class="ext">↗</span>
+        </a>
+      </h4>
+      <div class="paper-meta">
+        <span class="paper-authors">Wecks, J. O., Voshaar, J., <strong>Plate, B. J.</strong>, &amp; Zimmermann, J.</span>
+      </div>
+      <div class="paper-meta">
+        <span class="paper-venue">Proceedings of the European Conference on Information Systems (ECIS) <span class="vol">· 2025</span></span>
+      </div>
+      <div class="paper-actions">
+        <button type="button" class="abstract-trigger" aria-expanded="false" data-target="abs-2">
+          <span class="chev"></span><span class="lbl-txt">Abstract</span>
+        </button>
+        <button type="button" class="bibtex-trigger" data-target="bib-2">BibTeX</button>
+      </div>
+
+      <div class="abstract" id="abs-2">
+        <div class="abstract-text">
+          <p>This study evaluates the impact of students' usage of generative artificial intelligence (GenAI) tools such as ChatGPT on their exam performance. We analyse student essays using GenAI detection systems to identify GenAI users among the cohort.</p>
+          <p>Employing multivariate regression analysis, we find that students using GenAI tools score on average 6.71 (out of 100) points lower than non-users. While GenAI may offer benefits for learning and engagement, the way students actually use it correlates with diminished exam outcomes. Exploring the underlying mechanism, additional analyses show that the effect is particularly detrimental to students with high learning potential, suggesting an effect whereby GenAI tool usage hinders learning. Our findings provide important empirical evidence for the ongoing debate on the integration of GenAI in higher education.</p>
+        </div>
+        <figure class="figure">
+          <img src="assets/images/fig_genai_exam.jpg" alt="Score distributions pre and post GenAI for user and non-user groups">
+        </figure>
+      </div>
+
+      <div class="bibtex-panel" id="bib-2">
+<pre>@inproceedings{wecks2025genai,
+  title     = {Generative AI Usage and Exam Performance},
+  author    = {Wecks, Jan Ole and Voshaar, Jan and Plate, Benedikt J. and Zimmermann, Jochen},
+  booktitle = {Proceedings of the European Conference on Information Systems (ECIS)},
+  year      = {2025}
+}</pre>
+        <button class="bibtex-copy" type="button">Copy</button>
+      </div>
+    </article>
+
+    <!-- P3 -->
+    <article class="paper">
+      <h4 class="paper-title">
+        <a href="https://shop.idw-verlag.de/WPg-Die-Wirtschaftspruefung-21-2023/62321" target="_blank" rel="noopener">
+          Aktuelle Entwicklungen in der unternehmerischen Bilanz- und Kommunikationspolitik — Einsichten aus einer Befragungsstudie<span class="ext">↗</span>
+        </a>
+      </h4>
+      <div class="paper-meta">
+        <span class="paper-authors">Behrmann, V., <strong>Plate, B. J.</strong>, &amp; Zimmermann, J.</span>
+      </div>
+      <div class="paper-meta">
+        <span class="paper-venue">Die Wirtschaftsprüfung (WPg) <span class="vol">· 2023(21)</span></span>
+      </div>
+      <div class="paper-actions">
+        <button type="button" class="abstract-trigger" aria-expanded="false" data-target="abs-3">
+          <span class="chev"></span><span class="lbl-txt">Abstract</span>
+        </button>
+        <button type="button" class="bibtex-trigger" data-target="bib-3">BibTeX</button>
+      </div>
+
+      <div class="abstract" id="abs-3">
+        <div class="abstract-text">
+          <p>Trust between firms and investors ensures the functioning of the capital market. In addition to financial statement audits, internal corporate decisions regarding accounting and communication policies also contribute to building trust.</p>
+          <p>This study examines the influence of high reporting frequencies and benchmarks on the dimensions of accounting policy decisions, as well as companies’ assessments of alternative information channels and narrative reporting elements. Based on a survey of Prime Standard companies, it highlights the challenges and opportunities that arise for financial auditing and consulting in this context.</p>
+        </div>
+        <figure class="figure">
+          <img src="assets/images/fig_wpg.png" alt="Survey results: real activities management and expected loss in value">
+        </figure>
+      </div>
+
+      <div class="bibtex-panel" id="bib-3">
+<pre>@article{behrmann2023aktuelle,
+  title   = {Aktuelle Entwicklungen in der unternehmerischen Bilanz- und Kommunikationspolitik},
+  author  = {Behrmann, Vanessa and Plate, Benedikt J. and Zimmermann, Jochen},
+  journal = {Die Wirtschaftsprüfung (WPg)},
+  number  = {21},
+  year    = {2023}
+}</pre>
+        <button class="bibtex-copy" type="button">Copy</button>
+      </div>
+    </article>
+  </div>
+
+  <!-- Working Papers -->
+  <div class="research-group reveal">
+    <div class="group-label">
+      <h3>Working Papers</h3>
+      <span class="count">2 manuscripts</span>
+    </div>
+
+    <!-- W1 -->
+    <article class="paper">
+      <h4 class="paper-title">
+        <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5068116" target="_blank" rel="noopener">
+          Investor Reactions to Generative AI Usage in MD&amp;A Disclosures<span class="ext">↗</span>
+        </a>
+      </h4>
+      <div class="paper-meta">
+        <span class="paper-authors"><strong>Plate, B. J.</strong>, Voshaar, J., &amp; Zimmermann, J.</span>
+      </div>
+      <div class="paper-meta">
+        <span class="paper-venue">Working Paper <span class="vol">· 2025</span></span>
+      </div>
+      <div class="paper-presented">
+        <span class="lbl">Presented at:</span>Accounting &amp; Finance Research Seminar 2024, Tbilisi; 2nd Conference on AI in Corporate Finance 2025, Dresden
+      </div>
+      <div class="paper-actions">
+        <button type="button" class="abstract-trigger" aria-expanded="false" data-target="abs-4">
+          <span class="chev"></span><span class="lbl-txt">Abstract</span>
+        </button>
+        <button type="button" class="bibtex-trigger" data-target="bib-4">BibTeX</button>
+      </div>
+
+      <div class="abstract" id="abs-4">
+        <div class="abstract-text">
+          <p>This study examines the impact of generative artificial intelligence (GenAI) usage on investor reactions by focussing on the use of GenAI to create or modify 'Management's Discussion and Analysis of Financial Condition and Results of Operations' (MD&amp;A) sections of 10-K filings.</p>
+          <p>Analyzing 6,977 firm-year observations from filing years 2021 to 2023, we find that using GenAI for MD&amp;A texts is associated with adverse short-term investor reactions measured by signed and absolute cumulative abnormal returns (CAR). Using causal mediation analysis, we show that GenAI enhances financial disclosures' readability, leading to greater CAR. Tone, in contrast, remains unaffected, suggesting firms prioritize simplifying over tone manipulation. However, the mediation effect is outweighed by the negative direct effect, leading to a significantly negative impact of GenAI usage in narrative disclosures on investor reactions.</p>
+        </div>
+        <figure class="figure">
+          <img src="assets/images/fig_investor_reactions.jpg" alt="Causal mediation diagram: GenAI usage, readability, investor reactions">
+        </figure>
+      </div>
+
+      <div class="bibtex-panel" id="bib-4">
+<pre>@unpublished{plate2025investor,
+  title  = {Investor Reactions to Generative AI Usage in MD\&A Disclosures},
+  author = {Plate, Benedikt J. and Voshaar, Jan and Zimmermann, Jochen},
+  note   = {Working Paper},
+  year   = {2025},
+  url    = {https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5068116}
+}</pre>
+        <button class="bibtex-copy" type="button">Copy</button>
+      </div>
+    </article>
+
+    <!-- W2 -->
+    <article class="paper">
+      <h4 class="paper-title">
+        Real Effects of Accounting Reporting Complexity
+      </h4>
+      <div class="paper-meta">
+        <span class="paper-authors"><strong>Plate, B. J.</strong>, Voshaar, J., &amp; Zimmermann, J.</span>
+      </div>
+      <div class="paper-meta">
+        <span class="paper-venue">Working Paper <span class="vol">· 2024</span></span>
+      </div>
+      <div class="paper-presented">
+        <span class="lbl">Presented at:</span>Accounting &amp; Finance Research Seminar 2023, Tbilisi; 46th Annual Congress of the European Accounting Association (EAA) 2024, Bucharest
+      </div>
+      <div class="paper-actions">
+        <button type="button" class="abstract-trigger" aria-expanded="false" data-target="abs-5">
+          <span class="chev"></span><span class="lbl-txt">Abstract</span>
+        </button>
+        <button type="button" class="bibtex-trigger" data-target="bib-5">BibTeX</button>
+      </div>
+
+      <div class="abstract" id="abs-5">
+        <div class="abstract-text">
+          <p>This study examines the effect of accounting reporting complexity (ARC) on real economic investment decisions. Prior literature documents adverse capital market effects of ARC, suggesting that complexity in financial disclosures induces information frictions between managers and external debt or equity capital providers and, thereby, increases firms' cost of external capital.</p>
+          <p>Based on the pecking order of internal and external financing, we analytically predict that organizational investments in firms with higher ARC oscillate more strongly with fluctuations in internally available funds, translating into a higher sensitivity of organizational investment. Consistently, our empirical results document that firms with higher ARC expand organizational investment more aggressively when internal funds rise and cut them more decisively when funds fall.</p>
+          <p>We account for "non-standard errors" in our evidence-generating process by computing our OLS regression across 512 specifications with different research design choice combinations. Our empirical results remain statistically significant in 93.36 percent, indicating high robustness and validity of our empirical findings.</p>
+        </div>
+        <figure class="figure">
+          <img src="assets/images/fig_real_effects.jpg" alt="Empirical prediction: investment change by sales change under low vs. high ARC">
+        </figure>
+      </div>
+
+      <div class="bibtex-panel" id="bib-5">
+<pre>@unpublished{plate2024real,
+  title  = {Real Effects of Accounting Reporting Complexity},
+  author = {Plate, Benedikt J. and Voshaar, Jan and Zimmermann, Jochen},
+  note   = {Working Paper},
+  year   = {2024}
+}</pre>
+        <button class="bibtex-copy" type="button">Copy</button>
+      </div>
+    </article>
+  </div>
+
+  <!-- Referee Service -->
+  <div class="research-group reveal">
+    <div class="group-label">
+      <h3>Referee Service</h3>
+      <span class="count">1 journal</span>
+    </div>
+
+    <article class="paper">
+      <h4 class="paper-title">
+        <a href="https://aaahq.org/Research/Journals/Journal-of-Information-Systems" target="_blank" rel="noopener">
+          Journal of Information Systems<span class="ext">↗</span>
+        </a>
+      </h4>
+      <div class="paper-meta">
+        <span class="paper-authors">American Accounting Association</span>
+      </div>
+      <div class="paper-actions">
+        <button type="button" class="abstract-trigger" aria-expanded="false" data-target="abs-6">
+          <span class="chev"></span><span class="lbl-txt">Details</span>
+        </button>
+      </div>
+      <div class="abstract" id="abs-6" style="grid-template-columns: 1fr;">
+        <div class="abstract-text">
+          <p>The Journal of Information Systems (JIS) is a leading peer-reviewed journal published by the American Accounting Association. JIS publishes research on the intersection of accounting and information systems, covering topics such as data analytics, artificial intelligence, cybersecurity, and the design and use of accounting information systems. The journal is listed in the ABS Academic Journal Guide and the VHB Rating 2024.</p>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============================ TEACHING ============================ -->
+<section id="teaching">
+  <div class="reveal">
+    <h2 class="section-title">Teaching</h2>
+  </div>
+
+  <div class="teaching-list reveal">
+    <div class="teaching-item">
+      <h4>Introduction to Financial Accounting</h4>
+      <p class="teaching-meta">First-year bachelor program · Winter term (recurring) · ≈ 500 students</p>
+      <div class="paper-actions">
+        <button type="button" class="teaching-trigger" aria-expanded="false" data-target="teach-1">
+          <span class="chev"></span><span class="lbl-txt">Details</span>
+        </button>
+      </div>
+      <div class="teaching-details" id="teach-1">
+        <p>This mandatory introductory course covers the fundamentals of financial accounting for first-year business, economics, engineering, and management students. The course is attended by approximately 500 students each year and covers topics including the recording of business transactions, accrual accounting, depreciation and impairment, and inventory valuation. Teaching is delivered through a combination of lectures and tutorials, with the final grade determined by a written examination at the end of the semester.</p>
+      </div>
+    </div>
+
+    <div class="teaching-item">
+      <h4>Thesis Supervision</h4>
+      <p class="teaching-meta">Bachelor and master theses in accounting</p>
+      <div class="paper-actions">
+        <button type="button" class="teaching-trigger" aria-expanded="false" data-target="teach-2">
+          <span class="chev"></span><span class="lbl-txt">Details</span>
+        </button>
+      </div>
+      <div class="teaching-details" id="teach-2">
+        <p>I supervise bachelor and master theses in the area of financial accounting, with a focus on topics related to generative AI in financial reporting, accounting reporting complexity, XBRL, and capital market effects. Thesis projects typically involve quantitative empirical research using archival data. Students are guided through the process of developing research questions, conducting literature reviews, applying appropriate empirical methods, and presenting findings in a structured academic format.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div>© 2026 Benedikt J. Plate</div>
+  <div class="footer-legal-links">
+    <a href="imprint/">Legal Notice</a>
+    <span class="sep">·</span>
+    <a href="privacy/">Privacy</a>
+    <span class="sep">·</span>
+    <a href="#start" class="back-to-top">Back to top ↑</a>
+  </div>
+</footer>
+
+<script>
+// ---------- Theme toggle (persistent) ----------
+(function() {
+  const root = document.documentElement;
+  const saved = localStorage.getItem('bp-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const initial = saved || (prefersDark ? 'dark' : 'light');
+  root.setAttribute('data-theme', initial);
+  const btn = document.getElementById('themeToggle');
+  btn.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('bp-theme', next);
+  });
+})();
+
+// ---------- Mobile menu ----------
+(function() {
+  const ham = document.getElementById('hamburger');
+  const menu = document.getElementById('navMenu');
+  ham.addEventListener('click', () => menu.classList.toggle('open'));
+  menu.querySelectorAll('.nav-link').forEach(a =>
+    a.addEventListener('click', () => menu.classList.remove('open'))
+  );
+})();
+
+// ---------- Smooth anchor scroll ----------
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href');
+    if (id.length > 1) {
+      const t = document.querySelector(id);
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    }
+  });
+});
+
+// ---------- Scroll-spy ----------
+(function() {
+  const sections = document.querySelectorAll('main section');
+  const links = document.querySelectorAll('.nav-link');
+  function spy() {
+    let cur = sections[0]?.id;
+    const y = window.scrollY + 140;
+    sections.forEach(s => { if (y >= s.offsetTop) cur = s.id; });
+    links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + cur));
+  }
+  window.addEventListener('scroll', spy, { passive: true });
+  spy();
+})();
+
+// ---------- Disclosures ----------
+function bindToggle(selector, openClass) {
+  document.querySelectorAll(selector).forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = document.getElementById(btn.dataset.target);
+      if (!target) return;
+      const open = target.classList.toggle(openClass);
+      btn.setAttribute('aria-expanded', open);
+      const label = btn.querySelector('.lbl-txt');
+      if (label) {
+        const base = label.dataset.base || label.textContent;
+        label.dataset.base = base;
+        label.textContent = open ? 'Hide' : base;
+      }
+    });
+  });
+}
+bindToggle('.abstract-trigger', 'open');
+bindToggle('.teaching-trigger', 'open');
+
+// ---------- BibTeX panels ----------
+document.querySelectorAll('.bibtex-trigger').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = document.getElementById(btn.dataset.target);
+    if (!target) return;
+    target.classList.toggle('open');
+  });
+});
+document.querySelectorAll('.bibtex-copy').forEach(btn => {
+  btn.addEventListener('click', async () => {
+    const pre = btn.parentElement.querySelector('pre');
+    if (!pre) return;
+    try {
+      await navigator.clipboard.writeText(pre.textContent);
+      btn.textContent = 'Copied ✓';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 1800);
+    } catch (e) {
+      const r = document.createRange();
+      r.selectNode(pre);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(r);
+      document.execCommand('copy');
+      window.getSelection().removeAllRanges();
+      btn.textContent = 'Copied ✓';
+      setTimeout(() => { btn.textContent = 'Copy'; }, 1800);
+    }
+  });
+});
+
+// ---------- Scroll reveal ----------
+(function() {
+  const els = document.querySelectorAll('.reveal');
+  const vh = window.innerHeight || document.documentElement.clientHeight;
+  els.forEach(el => {
+    const r = el.getBoundingClientRect();
+    if (r.top < vh * 0.95) el.classList.add('visible');
+  });
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(el => { if (!el.classList.contains('visible')) io.observe(el); });
+})();
+</script>
+</body>
+</html>
